@@ -4,6 +4,7 @@
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{mathtools}
 \usepackage{array}
+\usepackage{booktabs}
 
 \usepackage{geometry}
 \geometry{
@@ -217,11 +218,14 @@ you wrote in part (2).
 (No inference rules allowed.)
 
 \begin{tabular}{cccc}
+  \toprule
   $P$ & $Q$ & $P \land Q$ & $P \land \lnot Q$ \\
+  \midrule
   T & T &      T    &      F          \\
   T & F &      F    &      T          \\
   F & T &      F    &      F          \\
   F & F &      F    &      F          \\
+  \bottomrule
 \end{tabular}
 
 So $P \implies (P \implies Q)$ is supported by enumeration, while $\lnot P \implies \lnot (P \implies Q)$ leads to contradiction.  Thus Joan will eat the hat.
