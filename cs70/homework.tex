@@ -1,0 +1,222 @@
+\documentclass[11pt,fleqn]{article}
+% \usepackage{cs70,latexsym,epsf}
+\usepackage{latexsym,epsf,fleqn}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathtools}
+
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+\newcommand\Set[2]{\{\,#1\mid#2\,\}}
+\newcommand\underoverset[3]{\underset{#1}{\overset{#2}{#3}}}
+\newcommand{\mbf}[1]{\mbox{{\bfseries #1}}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\section*{CS 70 homework 1 solutions}
+
+Your full name: Joey Yandle
+\newline
+Your login name: dragon
+\newline
+Homework 1
+\newline
+Your section number: 0
+\newline
+Your list of partners: Galina Vinnik
+\newline
+
+\begin{enumerate}
+\item
+For each of the following, define proposition
+symbols for each simple proposition in the argument (for example, $P$ =
+``I will ace this homework''). Then write out the logical form of
+the argument. If the argument form corresponds to a known inference
+rule, say which it is. If not, show that the proof is correct using
+truth tables.
+\begin{enumerate}
+\item  I will ace this homework and I will have fun doing it.
+Therefore, I will ace this homework.
+\begin{align}
+  P &= \text{``I will ace this homework''}\\
+  Q &= \text{``I will have fun doing it''}\\
+  P &\land Q \implies P
+\end{align}
+
+$P \land Q$ implies both $P$ and $Q$, and $P \implies P$.
+\begin{align}
+\therefore P \land Q \implies P\qed
+\end{align}
+
+\item It is hotter than 100 degrees today or the pollution is
+dangerous. It is less than 100 degrees today. Therefore, the pollution
+is dangerous.
+\begin{align}
+  P &= \text{``It is hotter than 100 degrees today''}\\
+  Q &= \text{``The pollution is dangerous''}\\
+  \neg P &= \text{``It is less than 100 degrees today''}\\
+  Q &= \text{``The pollution is dangerous''}\\
+  (P &\lor Q) \land \neg P \implies Q
+\end{align}
+
+We know that not only is $(P \lor Q)$ true, but also $P$ is not true, so $Q$ must be true.
+\begin{align}
+\therefore (P \lor Q) \land \neg P \implies Q \qed
+\end{align}
+
+(This is ignoring the possibility of the temperature being exactly 100 degrees, in which case it is possible for the pollution to not be dangerous)
+
+\newpage
+\item Tina will join a startup next year. Therefore,
+Tina will join a startup next year or she will be unemployed.
+\begin{align}
+  P &= \text{``Tina will join a startup next year''}\\
+  Q &= \text{``Tina will be unemployed''}\\
+  P &\implies (P \lor Q)
+\end{align}
+
+$P \implies P$, and $(P \lor Q)$ is true if $P$ or $Q$ is true.
+\begin{align}
+\therefore P \implies (P \lor Q) \qed
+\end{align}
+
+\item If I work all night on this homework, I will answer all the
+exercises. If I answer all the exercises, I will understand the
+material. Therefore, if I work all night on this homework, I will
+understand the material.
+
+\begin{align}
+  P &= \text{``I work all night on this homework''}\\
+  Q &= \text{``I will answer all the exercises''}\\
+  R &= \text{``I will understand the material''}\\
+  (P &\implies Q) \land (Q \implies R) \implies P
+\end{align}
+
+$P \implies Q$, and $Q \implies R$.  So if $P$ is true, $Q$ is true, and if $Q$ is true then $R$ is true.
+\begin{align}
+\therefore P \implies R\qed
+\end{align}
+\end{enumerate}
+
+\item
+Recall that $\N=\{0,1,\ldots\}$ denotes the set of natural numbers,
+and $\Z=\{\ldots,-1,0,1,\ldots\}$ denotes the set of integers.
+\begin{enumerate}
+\item Define $P(n)$ by
+\[ P(n) = \forall m \in \N , \; m<n \implies
+\neg (\exists k \in \N , \; n=mk \; \wedge \; k<n) \]
+Concisely, for which numbers $n\in\N$ is $P(n)$ true?
+
+$m | n \implies \exists k \in \N \ni n=mk$, which implies $\lnot P(n)$.  Therefore $P(n)$ is true when $m<n \implies m \nmid n$.  Such numbers are called prime numbers.
+\begin{align}
+\therefore P(n)\;\text{is true}\;\forall n \in \mathbb{P}\qed
+\end{align}
+
+\item Rewrite the following in a way that
+removes all negations (``$\neg$, $\ne$'') but remains equivalent.
+\[ \forall i . \; \neg \forall j . \;
+\neg \exists k . \; 
+(\neg \exists \ell . \; f(i,j) \ne g(k,\ell)). \]
+
+$\forall i,j\;\exists k,l \ni f(i,j) = g(k,\ell)$
+
+\item Prove or disprove:
+$\forall m \in \Z . \; \exists n \in \Z . \; m \ge n$.
+
+Let $n = m$.  By reflexion, $m \ge m$.
+\begin{align}
+\therefore \exists n \ni m \ge n
+\end{align}
+
+\item Prove or disprove:
+$\exists m \in \Z . \; \forall n \in \Z . \; m \ge n$.
+
+Assume such an $m$ exists.  Let $n = m+1$.  This implies
+\begin{align}
+  m &\ge m+1\\
+  0 &\ge 1
+\end{align}
+
+This is false, so using proof by contradiction the proposition fails.
+
+\end{enumerate}
+
+\item
+Alice and Bob are playing a game of chess,
+with Alice to move first.
+If $x_1,\dots,x_n$ represents a sequence of possible moves
+(i.e., first Alice will make move $x_1$, then Bob will make move $x_2$,
+and so on),
+we let $W(x_1,\dots,x_n)$ denote the proposition that,
+after this sequence of moves is completed,
+Bob is checkmated.
+\begin{enumerate}
+\item State using quantifier notation the proposition that Alice
+can force a checkmate on her second move, no matter how Bob plays.
+
+YOUR ANSWER GOES HERE.
+
+\item Alice has many possibilities to choose from on her first move,
+and wants to find one that lets her force a checkmate on her second move.
+State using quantifier notation the proposition that $x_1$
+is \emph{not} such a move.
+
+YOUR ANSWER GOES HERE.
+
+\end{enumerate}
+
+\item
+Joan is either a knight or a knave.
+Knights always tell the truth, and only the truth;
+knaves always tell falsehoods, and only falsehoods.
+Someone asks Joan, ``Are you a knight?''  She replies,
+``If I am a knight then I'll eat my hat.''
+\begin{enumerate}
+\item Must Joan eat her hat?
+
+YOUR ANSWER GOES HERE.
+
+\item Let's set this up as problem in propositional logic.
+Introduce the following propositions:
+\begin{eqnarray}
+P &=& \text{``Joan is a knight''}\\
+Q &=& \text{``Joan will eat her hat''}.
+\end{eqnarray}
+Translate what we're given into propositional logic,
+i.e., re-write the premises in terms of these propositions.
+
+YOUR ANSWER GOES HERE.
+
+\item Using proof by enumeration,
+prove that your answer from part (1) follows from the premises
+you wrote in part (2).
+(No inference rules allowed.)
+
+YOUR ANSWER GOES HERE.
+
+\end{enumerate}
+
+\item
+For each claim below,
+prove or disprove the claim.
+\begin{enumerate}
+\item Every positive integer can be expressed as the sum of two perfect squares. 
+(A perfect square is the square of an integer. 0 may be used in the sum.)
+
+YOUR ANSWER GOES HERE.
+
+\item For all rational numbers $a$ and $b$, $a^b$ is also rational.
+
+YOUR ANSWER GOES HERE.
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
