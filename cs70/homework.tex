@@ -3,6 +3,7 @@
 \usepackage{latexsym,epsf,fleqn}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{mathtools}
+\usepackage{array}
 
 \usepackage{geometry}
 \geometry{
@@ -17,6 +18,8 @@
 \newcommand{\mbf}[1]{\mbox{{\bfseries #1}}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
 
 \begin{document}
 
@@ -160,15 +163,17 @@ Bob is checkmated.
 \begin{enumerate}
 \item State using quantifier notation the proposition that Alice
 can force a checkmate on her second move, no matter how Bob plays.
-
-YOUR ANSWER GOES HERE.
+\begin{align}
+\forall x_1, x_2\;\exists x_3 \ni W(x_1, x_2, x_3)\;\text{is true}
+\end{align}
 
 \item Alice has many possibilities to choose from on her first move,
 and wants to find one that lets her force a checkmate on her second move.
 State using quantifier notation the proposition that $x_1$
 is \emph{not} such a move.
-
-YOUR ANSWER GOES HERE.
+\begin{align}
+\forall x_2, x_3\; W(x_1, x_2, x_3)\;\text{is false}
+\end{align}
 
 \end{enumerate}
 
@@ -180,8 +185,18 @@ Someone asks Joan, ``Are you a knight?''  She replies,
 ``If I am a knight then I'll eat my hat.''
 \begin{enumerate}
 \item Must Joan eat her hat?
+\begin{align}
+  P &= \text{``Joan is a knight''}\\
+  Q &= \text{``Joan will eat hat''}\\
+  P &\implies Q
+\end{align}
 
-YOUR ANSWER GOES HERE.
+If Joan is a knight, then she speaks truth, and so by the proposition will eat her hat.  If she is not a knight, then she speaks false, so we must negate her proposition:
+\begin{align}
+  \lnot (P &\implies Q) \iff (P \land \lnot Q)
+\end{align}
+
+So if Joan is a knave, then her statement must be false, but if it is false, then she must be a knight.  So Joan cannot be a knave, and thus must eat her hat.
 
 \item Let's set this up as problem in propositional logic.
 Introduce the following propositions:
@@ -191,16 +206,25 @@ Q &=& \text{``Joan will eat her hat''}.
 \end{eqnarray}
 Translate what we're given into propositional logic,
 i.e., re-write the premises in terms of these propositions.
-
-YOUR ANSWER GOES HERE.
+\begin{align}
+  P &\implies (P \implies Q) \iff (P \land Q)\\
+  \lnot P &\implies \lnot (P \implies Q) \iff (P \land \lnot Q)
+\end{align}
 
 \item Using proof by enumeration,
 prove that your answer from part (1) follows from the premises
 you wrote in part (2).
 (No inference rules allowed.)
 
-YOUR ANSWER GOES HERE.
+\begin{tabular}{cccc}
+  $P$ & $Q$ & $P \land Q$ & $P \land \lnot Q$ \\
+  T & T &      T    &      F          \\
+  T & F &      F    &      T          \\
+  F & T &      F    &      F          \\
+  F & F &      F    &      F          \\
+\end{tabular}
 
+So $P \implies (P \implies Q)$ is supported by enumeration, while $\lnot P \implies \lnot (P \implies Q)$ leads to contradiction.  Thus Joan will eat the hat.
 \end{enumerate}
 
 \item
@@ -209,12 +233,23 @@ prove or disprove the claim.
 \begin{enumerate}
 \item Every positive integer can be expressed as the sum of two perfect squares. 
 (A perfect square is the square of an integer. 0 may be used in the sum.)
+\begin{align}
+  a \in \mathbb{Z} &\implies \exists j,k \in \Z \ni a = j^2 + k^2\\
+  (a = j^2 + k^2) &\implies |j|,|k| \le \sqrt{a}
+\end{align}
 
-YOUR ANSWER GOES HERE.
+This cannot be true for all positive integers, since it is not true for $3$; the only integers $\le \sqrt{3}$ are $0$ and $1$, and the max sum of their squares is $2$.
+\begin{align}
+  \therefore (j^2 + k^2 < 3)\;\forall j,k \le \sqrt{3}
+\end{align}
 
 \item For all rational numbers $a$ and $b$, $a^b$ is also rational.
-
-YOUR ANSWER GOES HERE.
+\begin{align}
+  b \in \mathbb{R} &\implies \exists j,k \in \Z \ni b = \frac{j}{k}\\
+  k \nmid j &\implies a^b = a^{\frac{j}{k}} = a^j a^{\frac{1}{k}}\\
+  |k| > 1 &\implies \exists a \ni a^{\frac{1}{k}} \notin \mathbb{R}\;(\text{e.g.}\;a \in \mathbb{P})\\
+  \therefore \exists a, b &\in \mathbb{R} \ni a^b \notin \mathbb{R}
+\end{align}
 
 \end{enumerate}
 
