@@ -1,0 +1,97 @@
+\documentclass[11pt,fleqn]{article}
+% \usepackage{cs70,latexsym,epsf}
+\usepackage{latexsym,epsf,fleqn}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{booktabs}
+
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+\newcommand\Set[2]{\{\,#1\mid#2\,\}}
+\newcommand\underoverset[3]{\underset{#1}{\overset{#2}{#3}}}
+\newcommand{\mbf}[1]{\mbox{{\bfseries #1}}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+
+\begin{document}
+
+\section*{Exercises}
+
+\subsection*{Section 2.2. The discrete logarithm problem}
+
+\textbf{2.3.} Let $g$ be a primitive root for $\F_{p}$
+\begin{itemize}
+\item[(a)] Suppose that $x = a$ and $x = b$ are both integer solutions to the congruence $g^x \equiv h \pmod{p}$. Prove that $a \equiv b \pmod{p-1}$. Explain why this implies that the map (2.1) on page 63 is well-defined. \\
+Fermat's Little Theorem tells us that $g^{p-1} \equiv 1 \pmod{p}$.  So if $g^a \equiv h \pmod{p}$, then multiplying by $g^{p-1}$ $k_1$ times gives us:
+\begin{align}
+  g^{a + k_1(p-1)} \equiv h \pmod{p}
+\end{align}
+
+Likewise for $g^b \equiv h \pmod{p}$ but $k_2$ times:
+\begin{align}
+  g^{b + k_2(p-1)} \equiv h \pmod{p}
+\end{align}
+
+Setting the exponents equal to each other:
+\begin{align}
+  a + k_1(p-1) &= b + k_2(p-1)\\
+  a - b &= (k_2 - k_1)(p-1)
+\end{align}
+Since $k_1$ and $k_2$ are integers, $k_2 - k_1$ is an integer.  This means $a-b$ is divisible by $p-1$, and thus $a \equiv b \pmod{p-1}$.
+
+\item[(b)] Prove that $log_g (h_1 h_2) = log_g (h_1) + log_g (h_2)$ $\forall h_1, h_2 \in F_p^*$.\\
+  Let $log_g (h_1) = x_1$ and $log_g (h_2) = x_2$.  This means that $g^{x_1} = h_1$ an $g^{x_2} = h_2$.  Thus:
+\begin{align}
+  h_1 h_2 &= g^{x_1} g^{x_2}\\
+          &= g^{x_1 + x_2}
+\end{align}
+
+Taking the logarithm of both sides:
+\begin{align}
+  log_g (h_1 h_2) &= log_g (g^{x_1 + x_2})\\
+  &= x_1 + x_2\\
+  &= log_g (h_1) + log_g (h_2)
+\end{align}
+
+\item[(c)] Prove that $log_g (h^n) = n \; log_g (h)$ $\forall h \in F_p^*$ and $n \in \Z$.\\
+  Let $log_g (h) = x$.  This means that $g^{x} = h$.  If we raise $h$ to the power of $n$:
+\begin{align}
+  h^n &= (g^{x})^n\\
+          &= g^{xn}\\
+          &= g^{nx}
+\end{align}
+
+Taking the logarithm of both sides:
+\begin{align}
+  log_g (h^n) &= log_g (g^{nx})\\
+  &= nx\\
+  &= n\;log_g (h)
+\end{align}
+  
+\end{itemize}
+
+\subsection*{Section 2.3. Diffie–Hellman key exchange}
+
+\textbf{2.7.} Let $p$ be a prime and let $g$ be an integer. The \textit{Diffie–Hellman Decision Problem} is as follows. Supoose that you are given three numbers $A$, $B$, and $C$, and suppose that $A$ and $B$ are equal to
+\begin{center}
+$A \equiv g^q \pmod{p}$  and  $B \equiv g^b \pmod{p}$
+\end{center}
+but that you do not necessarily know the values of the exponents $a$ and $b$. Determine whether $C$ is equal to $g^{ab} \pmod{p}$. Notice that this is different from the Diffie–Hellman problem described on page 67. The Diffie–Hellman problem asks you to actually compute the value of $g^{ab}$. 
+\begin{itemize}
+\item[(a)] Prove that an algorithm that solves the Diffie–Hellman problem can be used to solve the Diffie–Hellman decision problem. \\
+  If we can solve the \textbf{DHP}, we can compute $g^{ab}$ directly from $A$ and $B$, and compare it to $C$.  
+\item[(b)] Do you think that the Diffie–Hellman decision problem is hard or easy? Why? \\
+  
+\end{itemize}
+
+\end{document}
