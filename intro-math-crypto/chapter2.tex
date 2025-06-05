@@ -32,53 +32,71 @@
 \textbf{2.3.} Let $g$ be a primitive root for $\F_{p}$
 \begin{itemize}
 \item[(a)] Suppose that $x = a$ and $x = b$ are both integer solutions to the congruence $g^x \equiv h \pmod{p}$. Prove that $a \equiv b \pmod{p-1}$. Explain why this implies that the map (2.1) on page 63 is well-defined. \\
+  \\
 Fermat's Little Theorem tells us that $g^{p-1} \equiv 1 \pmod{p}$.  So if $g^a \equiv h \pmod{p}$, then multiplying by $g^{p-1}$ $k_1$ times gives us:
 \begin{align}
-  g^{a + k_1(p-1)} \equiv h \pmod{p}
+  g^{a + k_1(p-1)} \equiv h \pmod{p}\nonumber
 \end{align}
 
 Likewise for $g^b \equiv h \pmod{p}$ but $k_2$ times:
 \begin{align}
-  g^{b + k_2(p-1)} \equiv h \pmod{p}
+  g^{b + k_2(p-1)} \equiv h \pmod{p}\nonumber
 \end{align}
 
 Setting the exponents equal to each other:
 \begin{align}
-  a + k_1(p-1) &= b + k_2(p-1)\\
-  a - b &= (k_2 - k_1)(p-1)
+  a + k_1(p-1) &= b + k_2(p-1)\nonumber\\
+  a - b &= (k_2 - k_1)(p-1)\nonumber
 \end{align}
 Since $k_1$ and $k_2$ are integers, $k_2 - k_1$ is an integer.  This means $a-b$ is divisible by $p-1$, and thus $a \equiv b \pmod{p-1}$.
 
-\item[(b)] Prove that $log_g (h_1 h_2) = log_g (h_1) + log_g (h_2)$ $\forall h_1, h_2 \in F_p^*$.\\
+\item[(b)] Prove that $log_g (h_1 h_2) = log_g (h_1) + log_g (h_2)$ $\forall h_1, h_2 \in \F_p^*$.\\
+  \\
   Let $log_g (h_1) = x_1$ and $log_g (h_2) = x_2$.  This means that $g^{x_1} = h_1$ an $g^{x_2} = h_2$.  Thus:
 \begin{align}
-  h_1 h_2 &= g^{x_1} g^{x_2}\\
-          &= g^{x_1 + x_2}
+  h_1 h_2 &= g^{x_1} g^{x_2}\nonumber\\
+          &= g^{x_1 + x_2}\nonumber
 \end{align}
 
 Taking the logarithm of both sides:
 \begin{align}
-  log_g (h_1 h_2) &= log_g (g^{x_1 + x_2})\\
-  &= x_1 + x_2\\
-  &= log_g (h_1) + log_g (h_2)
+  log_g (h_1 h_2) &= log_g (g^{x_1 + x_2})\nonumber\\
+  &= x_1 + x_2\nonumber\\
+  &= log_g (h_1) + log_g (h_2)\nonumber
 \end{align}
 
-\item[(c)] Prove that $log_g (h^n) = n \; log_g (h)$ $\forall h \in F_p^*$ and $n \in \Z$.\\
+\item[(c)] Prove that $log_g (h^n) = n \; log_g (h)$ $\forall h \in \F_p^*$ and $n \in \Z$.\\
+\\
   Let $log_g (h) = x$.  This means that $g^{x} = h$.  If we raise $h$ to the power of $n$:
 \begin{align}
-  h^n &= (g^{x})^n\\
-          &= g^{xn}\\
-          &= g^{nx}
+  h^n &= (g^{x})^n\nonumber\\
+          &= g^{xn}\nonumber\\
+          &= g^{nx}\nonumber
 \end{align}
 
 Taking the logarithm of both sides:
 \begin{align}
-  log_g (h^n) &= log_g (g^{nx})\\
-  &= nx\\
-  &= n\;log_g (h)
+  log_g (h^n) &= log_g (g^{nx})\nonumber\\
+  &= nx\nonumber\\
+  &= n\;log_g (h)\nonumber
 \end{align}
   
 \end{itemize}
+
+
+\textbf{2.5.} Let $p$ be an odd prime and let $g$ be a primitive root module $p$.  Prove that $a$ has a square root modulo $p$ if and only if its discrete logarithm $log_g (a)$ modulo $p$ is even.\\
+\\
+Assume that $log_g (a)$ is even, so $log_g (a) = 2k$ for some $k \in \Z$.  That means that:
+\begin{align}
+  a &= g^{2k}\nonumber\\
+  \sqrt{a} &= (g^{2k})^{\frac{1}{2}}\nonumber\\
+  &= g^{\frac{2k}{2}}\nonumber\\
+  &= g^k\nonumber
+\end{align}
+
+Next assume the reverse, so $a$ has a square root modulo $p$.  By Fermat's Little Theorem, we know that $\exists k \in \F_p^* \ni g^k = a$.  But since $a$ has a square root, $2$ must divide $k$, which means that $k$ is even.\\
+\\
+Thus $a$ has a square root modulo $p$ if and only if its discrete logarithm $log_g (a)$ modulo $p$ is even.
 
 \subsection*{Section 2.3. Diffie–Hellman key exchange}
 
@@ -93,5 +111,10 @@ but that you do not necessarily know the values of the exponents $a$ and $b$. De
 \item[(b)] Do you think that the Diffie–Hellman decision problem is hard or easy? Why? \\
   
 \end{itemize}
+
+
+\subsection*{Section 2.10. Rings, quotient rings, polynomial rings, and finite fields}
+
+\textbf{2.29.} Let $R$ be a ring with the property that the only way that a product $a \cdot b$ can be $0$ is if $a = 0$ or $b = 0$. (In the terminology of Example 2.56, the ring R has no zero divisors.) Suppose further that $R$ has only finitely many elements. Prove that R is a field. (Hint. Let $a \in R$ with $a \neq 0$. What can you say about the map $R \rightarrow R$ defined by $b \rightarrow a \cdot b$?) 
 
 \end{document}
