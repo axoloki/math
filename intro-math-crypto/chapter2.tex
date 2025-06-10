@@ -94,7 +94,7 @@ Assume that $log_g (a)$ is even, so $log_g (a) = 2k$ for some $k \in \Z$.  That 
   &= g^k\nonumber
 \end{align}
 
-Next assume the reverse, so $a$ has a square root modulo $p$.  By Fermat's Little Theorem, we know that $\exists k \in \F_p^* \ni g^k = a$.  But since $a$ has a square root, $2$ must divide $k$, which means that $k$ is even.\\
+Next assume the reverse, that $a$ has a square root modulo $p$.  By Fermat's Little Theorem, we know that $\exists k \in \F_p^* \ni g^k = a$.  But since $a$ has a square root, $2$ must divide $k$, which means that $k$ is even.\\
 \\
 Thus $a$ has a square root modulo $p$ if and only if its discrete logarithm $log_g (a)$ modulo $p$ is even.
 
@@ -115,6 +115,74 @@ but that you do not necessarily know the values of the exponents $a$ and $b$. De
 
 \subsection*{Section 2.10. Rings, quotient rings, polynomial rings, and finite fields}
 
-\textbf{2.29.} Let $R$ be a ring with the property that the only way that a product $a \cdot b$ can be $0$ is if $a = 0$ or $b = 0$. (In the terminology of Example 2.56, the ring R has no zero divisors.) Suppose further that $R$ has only finitely many elements. Prove that R is a field. (Hint. Let $a \in R$ with $a \neq 0$. What can you say about the map $R \rightarrow R$ defined by $b \rightarrow a \cdot b$?) 
+\textbf{2.29.} Let $R$ be a ring with the property that the only way that a product $a \cdot b$ can be $0$ is if $a = 0$ or $b = 0$. (In the terminology of Example 2.56, the ring R has no zero divisors.) Suppose further that $R$ has only finitely many elements. Prove that R is a field. (Hint. Let $a \in R$ with $a \neq 0$. What can you say about the map $R \rightarrow R$ defined by $b \mapsto a \cdot b$?) \\
+\\
+
+\newpage
+\begin{flushleft}
+\textbf{2.30.} Let $R$ be a ring.  Prove the following properties of $R$ directly from the ring axioms described in Section 2.10.1.
+\end{flushleft}
+
+\begin{itemize}
+\item[(a)] Prove that the additive identity element $0 \in R$ is unique, i.e. prove that there is only one element in $R$ satisfying $0 + a = a + 0 = a$ for every $a \in R$.\\
+  \\
+  Let $b + a = a + b = a$ and for some $b \in R$.  Let $c$ be the additive inverse of $a$.  Thus:
+\begin{align}
+  a + b &= a\nonumber\\
+  a + b + c &= a + c\nonumber\\
+  (a + c) + b &= a + c\nonumber\\
+  0 + b &= 0\nonumber\\
+  b &= 0\nonumber
+\end{align}
+
+Thus every additive identity $b \in R$ is equal to $0$.
+  
+\item[(b)] Prove that the multiplicative identity element $1 \in R$ is unique.\\
+  \\
+  
+\item[(c)] Prove that every element of $R$ has a unique additive inverse.\\
+  \\
+  Let $b$ and $c$ both be additive inverses of $a$, so $a+b=0$ and $a+c=0$.  If we subtract these two equations we get:
+  \begin{align}
+    (a+b) - (a+c) &= 0\nonumber\\
+    (a-a) + b - c &= 0\nonumber\\
+    b &= c\nonumber
+  \end{align}
+
+  Thus if $b$ and $c$ are both additive inverses of $a$, $b = c$, and so the additive inverse of $a$ is unique $\forall a \in R$.
+
+\item[(d)] Prove that $0 * a = a * 0 = 0$ for every $a \in R$.\\
+  \\
+  We know that every element $a$ has an additive inverse, which by $(e)$ we will denote as $-a$.  If we add $a$ to its additive inverse, then multiply by $a$ and distribute, we get:
+\begin{align}
+  0 * a &= (-a + a) * a\nonumber\\
+  &= ((-a) * a) + (a * a)\nonumber\\
+  &= -(a*a) + (a*a)\nonumber\\
+  &= 0\nonumber
+\end{align}
+    
+  
+\item[(e)] We denote the additive inverse of $a$ by $-a$.  Prove that $-(-a) = a$.\\
+  \\
+If $-a$ is the additive inverse of $a$, then $-a + a = 0$.  But this means that $a$ is also the additive inverse of $-a$, and thus $-(-a) = a$.
+  
+\item[(f)] Let $-1$ be the additive inverse of the multiplicative identity element $1 \in R$.  Prove that $(-1)*(-1) = 1$.\\
+  \\
+If $-1$ is the additive inverse of $1$, then $-1 + 1 = 0$.  If we multiply both sides by $-1$ and distribute:
+\begin{align}
+  -1 * (-1 + 1) &= -1 * 0\nonumber\\
+  ((-1) * (-1)) + ((-1) * (1)) &= -1 * 0\nonumber\\
+  ((-1) * (-1)) + -1 &= 0\nonumber\\
+  (-1) * (-1) &= 1\nonumber
+\end{align}
+  
+\item[(g)] Prove that $b\:|\:0$ for every nonzero $b \in R$.\\
+  \\
+  From $(d)$ we know that $0 * b = 0$.  Let $c = 0$.  Thus $0 = b * c$, and $b\:|\:0$.
+  
+\item[(h)] Prove that an element of $R$ has at most one multiplicative inverse.\\
+  \\
+  
+\end{itemize}
 
 \end{document}
