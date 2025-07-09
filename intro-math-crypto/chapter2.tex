@@ -185,4 +185,54 @@ If $-1$ is the additive inverse of $1$, then $-1 + 1 = 0$.  If we multiply both 
   
 \end{itemize}
 
+\begin{flushleft}
+\textbf{2.30.} Prove Proposition 2.42: Let $R$ be a ring and let $m \in R$ with $m \neq 0$. If\\
+\begin{center}
+$a_1 \equiv a_2 \pmod{m} \;\;\; \;\;\; and \;\;\;\;\;\; b_1 \equiv b_2 \pmod{m}$
+\end{center}
+then\\
+\begin{center}
+$a_1 \pm b_1 \equiv a_2 \pm b_2 \pmod{m} \;\;\;and\;\;\; a_1 \star b_1 \equiv a_2 \star b_2 \pmod{m}$
+\end{center}
+
+\end{flushleft}
+
+By the definition of congruence, we know that for some $k_1, k_2 \in R$
+\begin{align}
+    a_1 - a_2 &= k_1 \star m \nonumber\\
+    b_1 - b_2 &= k_2 \star m \nonumber
+\end{align}
+
+Add, associate, and anti-distribute:
+\begin{align}
+    a_1 - a_2 + b_1 - b_2 &= k_1 \star m + k_2 \star m \nonumber\\
+    (a_1 + b_1) - (a_2 + b_2) &= (k_1 + k_2) \star m \nonumber
+\end{align}
+
+Since $k_1, k_2 \in R$, $(k_1 + k_2) \in R$.  Thus:
+\begin{align}
+a_1 + b_1 \equiv a_2 + b_2 \pmod{m}\nonumber
+\end{align}
+
+If instead of adding, we subtract, then associate and anti-distribute:
+\begin{align}
+    a_1 - a_2 - b_1 + b_2 &= k_1 \star m - k_2 \star m \nonumber\\
+    (a_1 - b_1) - (a_2 - b_2) &= (k_1 - k_2) \star m \nonumber
+\end{align}
+
+Since $k_1, k_2 \in R$, $(k_1 - k_2) \in R$.  Thus:
+\begin{align}
+a_1 - b_1 \equiv a_2 - b_2 \pmod{m}\nonumber
+\end{align}
+
+Combining these two gives us:
+\begin{align}
+a_1 \pm b_1 \equiv a_2 \pm b_2 \pmod{m}\nonumber
+\end{align}
+
 \end{document}
+
+
+
+
+
