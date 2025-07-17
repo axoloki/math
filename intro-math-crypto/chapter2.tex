@@ -186,7 +186,7 @@ If $-1$ is the additive inverse of $1$, then $-1 + 1 = 0$.  If we multiply both 
 \end{itemize}
 
 \begin{flushleft}
-\textbf{2.30.} Prove Proposition 2.42: Let $R$ be a ring and let $m \in R$ with $m \neq 0$. If\\
+\textbf{2.31.} Prove Proposition 2.42: Let $R$ be a ring and let $m \in R$ with $m \neq 0$. If\\
 \begin{center}
 $a_1 \equiv a_2 \pmod{m} \;\;\; \;\;\; and \;\;\;\;\;\; b_1 \equiv b_2 \pmod{m}$
 \end{center}
@@ -229,6 +229,33 @@ Combining these two gives us:
 \begin{align}
 a_1 \pm b_1 \equiv a_2 \pm b_2 \pmod{m}\nonumber
 \end{align}
+
+For the second part, go back to the definition of congruence, then multiply the first equation by $b_1$ and the second by $a_2$:
+\begin{align}
+    a_1 \star b_1 - a_2 \star b_1 &= b_1 \star k_1 \star m \nonumber\\
+    a_2 \star b_1 - a_2 \star b_2 &= a_2 \star k_2 \star m \nonumber
+\end{align}
+
+Again, add, associate, and anti-distribute, and also eliminate:
+\begin{align}
+    a_1 \star b_1 - a_2 \star b_1 + a_2 \star b_1 - a_2 \star b_2 &= b_1 \star k_1 \star m + a_2 \star k_2 \star m \nonumber\\
+    (a_1 \star b_1) - (a_2 \star b_2) &= (b_1 \star k_1 + a_2 \star k_2) \star m \nonumber
+\end{align}
+
+Since $a_2, b_1, k_1, k_2 \in R$, $(b_1 \star k_1 + a_2 \star k_2) \in R$.  Thus:
+\begin{align}
+a_1 \star b_1 \equiv a_2 \star b_2 \pmod{m}\nonumber
+\end{align}
+
+\begin{flushleft}
+\textbf{2.32.} Prove Proposition 2.44: The formulas:
+\begin{center}
+$\bar{a} + \bar{b} = \overline{a + b}\;\;\; \;\;\; and \;\;\;\;\;\; \bar{a} \star \bar{b} = \overline{a \star b}$
+\end{center}
+give well-defined addition and multiplication rules on the set of congruence classes $R/(m)$, and they make $R/(m)$ into a ring.
+\end{flushleft}
+
+We define $\bar{a}$ as the set of all $a' \in R \ni a' \equiv a \pmod{m}$, and likewise for $\bar{b}$. Using Proposition 2.42, we can say that $a' + b' \equiv a + b \pmod{m}$. But this is just the equivalence class $\overline{a+b}$. Thus we can see that addition is well defined in $R/(m)$, and the same argument applies to multiplication. Thus $R/(m)$ is a ring.  
 
 \end{document}
 
