@@ -1,0 +1,44 @@
+\documentclass[11pt,fleqn]{article}
+
+\usepackage{latexsym,epsf,fleqn}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{booktabs}
+
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+\newcommand\Set[2]{\{\,#1\mid#2\,\}}
+\newcommand\underoverset[3]{\underset{#1}{\overset{#2}{#3}}}
+\newcommand{\mbf}[1]{\mbox{{\bfseries #1}}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+
+\begin{document}
+
+\section*{Exercises}
+
+\subsection*{Section 6.9. Convolution Polynomial Rings}
+
+\textbf{6.21.} Compute (by hand) the convolution polynomial product $\mathbf{c} = \mathbf{a} \star \mathbf{b}$ using the given value of $N$.
+\begin{itemize}
+\item[(a)] $N = 3$, \;\;\;$\mathbf{a}(x) = -1 + 4x + 5x^2, \;\;\; \mathbf{b}(x) = -1-3x-2x^2$ 
+\begin{align}
+    \mathbf{c} &= 1 + 3x + 2x^2 - 4x - 12x^2 - 8x^3 - 5x^2 - 15x^3 - 10x^4\nonumber\\
+    &= 1 + 3x + 2x^2 - 4x - 12x^2 - 8 - 5x^2 - 15 - 10x\nonumber\\
+    &= -22 - 11x + 15x^2\nonumber
+\end{align}
+
+\end{itemize}
+
+\end{document}
+
